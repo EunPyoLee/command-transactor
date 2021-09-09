@@ -13,7 +13,7 @@ public class TransOutCommand extends TransCommand{
 
     @Override
     public TransCommand execute() {
-        undoCommand = inCommandFactory.createTransactionCommand(amount);
+        undoCommand = inCommandFactory.createTransactionCommand(-amount);
         return this;
     }
 
@@ -26,6 +26,6 @@ public class TransOutCommand extends TransCommand{
 
     @Override
     public void print() {
-        System.out.printf("Transfer IN: amount=[%d]\n", -amount);
+        System.out.printf("Transfer OUT: amount=[%d]\n", -amount);
     }
 }

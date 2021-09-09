@@ -14,13 +14,17 @@ public class Transactor {
     }
 
     public void add(TransCommand t){
+        t.execute();
         tempCommands.add(t);
     }
 
-    public void commit(){
+    // Returns commit id
+    public int commit(){
         System.out.println("Committing....");
-        ledger.write(tempCommands);
+        int commitID = ledger.write(tempCommands);
         System.out.println("Commit finish");
+        tempCommands.clear();
+        return commitID;
     }
 
     public void rollback(){
